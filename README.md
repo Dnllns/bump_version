@@ -43,3 +43,4 @@ Para actualizar la version de la app:
  -> Menor de la version, realizar un commit con la palabra clave '--update minor'
  -> Patch de la version, realizar un commit con la palabra clave '--update patch'
 ``````
+
