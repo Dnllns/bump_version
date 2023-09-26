@@ -28,8 +28,6 @@ echo '# Hook post-commit para actualizar la versión del proyecto' >> "$post_com
 echo "python bump_version/$bump_script" >> "$post_commit_hook"
 
 # Crear el archivo de versiones (version.py) con una versión inicial
-
-echo $(pwd)
 echo '__version__ = "1.0.0"' > "../$version_file"
 echo '__branch__ = "master"' >> "../$version_file"
 
