@@ -89,6 +89,9 @@ def amend_commit_message(commit_msg, branch, new_version):
     keyword_pattern = re.compile(rf'{keywords["key"]} ({keywords["major_key"]}|{keywords["minor_key"]}|{keywords["patch_key"]})')
     new_commit_msg = keyword_pattern.sub(f"Version: {branch.upper()}-{new_version}", commit_msg)
 
+    # Añadir el archivo 'version.py' al commit
+    subprocess.run(["git", "add", keywords["version_file"]])
+
     # Modificar el mensaje del último commit mediante el comando 'git commit --amend'
     subprocess.run(["git", "commit", "--amend", "-m", new_commit_msg])
 
@@ -102,6 +105,7 @@ def main():
     current_version = read_current_version()
     new_version, branch = update_version_and_commit(mode, current_version)
     amend_commit_message(commit_msg, branch, new_version)
+
 
     # Imprimir la nueva versión
     ANSI_GREEN = "\033[92m"
